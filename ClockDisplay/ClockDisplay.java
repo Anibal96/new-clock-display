@@ -19,12 +19,7 @@ public class ClockDisplay
     {
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
-     */
+    
     public void setTime(int hora, int minuto)
     {
         horas = hora;
@@ -33,18 +28,26 @@ public class ClockDisplay
     
     public void timeTick()
     {
-        if (minutos<59){
+        if (minutos<60){
             minutos = minutos + 1;
         }
-        if(minutos==59){
+        if (minutos==60){
             horas = horas +1;
             minutos = 0;
+        }
+        if (horas==24){
+            horas = 0;
         }
             
     }
     
-    public void getTime()
+    /**
+     * Mostrar tiempo.
+     */
+    public String getTime()
     {
-        System.out.println(horas + ":" + minutos);
+       String horAc = "%02d:%02d";
+       String resultado = String.format(horAc,horas,minutos);
+       return resultado;
     }
 }
